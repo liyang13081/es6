@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css" media="screen">
+		*{
+			margin:0;
+			padding: 0;		
+		}
+		.container{
+			width: 100%;
+			height: 100%;
+		    background: url(images/bg.gif);
+		    overflow: hidden;
+		}
+		.content{
+			width: 920px;
+			height: 700px;
+			margin:50px auto;
+			background: url(images/content_bg.jpg);
+			position: relative;
+			padding: 20px;
+		}
+		.box{
+			width: 227px;
+			height: 300px;
+			position: absolute;
+			top:20px;
+			left: 20px;
+		}
+		.min-box{
+			width: 100%;
+			height: 68px;
+			background: url(images/tip1_h.gif);
+			position: relative;
+		}
+		.text-box{
+			width: 100%;
+			height: 120px;
+			background: url(images/tip1_c.gif);
+			
+		}
+		.max-box{
+			width: 100%;
+			height: 63px;
+			background: url(images/tip1_f.gif);
+		}
+		.top-box{
+			width: 90%;
+			line-height: 30px;
+			
+			font-size: 12px;
+			position: absolute;
+			bottom: 0;
+			left:50%;
+			margin-left:-45%;
+
+
+		}
+		.guan{
+			float: right;
+			cursor: pointer;
+		}
+		.img{
+			margin:20px;
+		}
+		.bouttom{
+			float: right;
+			margin: 20px;
+			color:red;
+			font-size: 13px;
+
+		}
+		.text{
+			width: 90%;
+			margin: 0 auto;
+			font-size: 12px;
+			text-indent: 2em;
+			overflow: hidden;
+		}
+	</style>
+</head>
+<body>
+	<div id="con"></div>
+
+</body>
+<script type="text/javascript" src="D:/vue框架/vue/dist/vue.js"></script>
+<script type="text/javascript">
+	var MyBox={
+		template:`<div>
+			<div v-for="(item,index) in arra" :style="{left:item.aa,top:item.bb}" class="box" v-show="item.sw" title="双击关闭">
+				<div class="min-box" @mousedown="spa=index" @dblclick="fn">
+					<div class="top-box">
+						{{item.tite}}
+						<div class="guan" @mousedown="spa=index" @mouseup="fn" title="关闭">X</div>
+					</div>
+				</div>
+				<div class="text-box">
+					<div class="text">
+						{{item.text}}
+					</div>
+				</div>
+				<div class="max-box">
+					<img class="img" src="" alt="" />
+					<div class="bouttom">
+						{{item.ap}}
+					</div>
+				</div>
+			</div>
+		</div>`,
+		props:['arra'],
+		data(){
+			return {
+				swa:false,
+				spa:0,
+			}
+		},
+		methods:{
+			fn(){
+				this.$emit('sp',this.spa);
+				this.$emit('swp',this.swa);
+			},
+		}
+	}
+	new Vue({
+		el:'#con',
+		components:{
+			'my-box':MyBox,
+		},
+		template:`<div class=" container" >
+			<div class="content" ref="maxbox">
+				<my-box ref="box" v-bind="{arra:arr}"  v-on="{swp:swp,sp:sp}" ></my-box>
+
+			</div>
+		</div>`,
+		data(){
+			return {
+				arr:[
+					{
+						tite:'第[49560]条 2016-27-17 22:51:52',
+						text:'大家分开多久发快递大家分开多久发快递大家分开多久发快递大家分开多久发快递大家分开多久发快递大家分开多久发快递大家分开多久发快递大家分开多久发快递大家分开多久发快递大家分开多久发快递',
+						ap:'所涉及的风景',
+						sw:true,
+						aa:"",
+						bb:"",
+					},
+					{
+						tite:'第[49561]条 2016-27-17 22:51:52',
+						text:'大家分开多久发快递大家分开多久发快递大家分开多久发快递大家分开多久发快递大家分开多久发快递大家分开多久发快递大家分开多久发快递大家分开多久发快递大家分开多久发快递大家分开多久发快递',
+						ap:'所涉及的风景',
+						sw:true,
+						aa:"",
+						bb:"",
+					},
+					{
+						tite:'第[49562]条 2016-27-17 22:51:52',
+						text:'大家分开多久发快递大家分开多久发快递大家分开多久发快递大家分开多久发快递大家分开多久发快递大家分开多久发快递大家分开多久发快递大家分开多久发快递大家分开多久发快递大家分开多久发快递',
+						ap:'所涉及的风景',
+						sw:true,
+						aa:"",
+						bb:"",
+					},
+					{
+						tite:'第[4953]条 2016-27-17 22:51:52',
+						text:'金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府',
+						ap:'金额设计',
+						sw:true,
+						aa:"",
+						bb:"",
+					},
+					{
+						tite:'第[4953]条 2016-27-17 22:51:52',
+						text:'金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府',
+						ap:'金额设计',
+						sw:true,
+						aa:"",
+						bb:"",
+					},
+					{
+						tite:'第[4953]条 2016-27-17 22:51:52',
+						text:'金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府',
+						ap:'金额设计',
+						sw:true,
+						aa:"",
+						bb:"",
+					},
+					{
+						tite:'第[4953]条 2016-27-17 22:51:52',
+						text:'金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府',
+						ap:'金额设计',
+						sw:true,
+						aa:"",
+						bb:"",
+					},
+					{
+						tite:'第[4953]条 2016-27-17 22:51:52',
+						text:'金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府',
+						ap:'金额设计',
+						sw:true,
+						aa:"",
+						bb:"",
+					},
+					{
+						tite:'第[4953]条 2016-27-17 22:51:52',
+						text:'金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府',
+						ap:'金额设计',
+						sw:true,
+						aa:"",
+						bb:"",
+					},
+					{
+						tite:'第[4953]条 2016-27-17 22:51:52',
+						text:'金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府',
+						ap:'金额设计',
+						sw:true,
+						aa:"",
+						bb:"",
+					},
+					{
+						tite:'第[4953]条 2016-27-17 22:51:52',
+						text:'金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府金额设计而开封府',
+						ap:'金额设计',
+						sw:true,
+						aa:"",
+						bb:"",
+					},
+				], 
+				sps:0,
+			}
+		},
+		methods:{
+			sp(spa){
+				this.sps=spa;
+			},
+			swp(swa){
+				var spp=this.sps;
+				this.arr[spp].sw=swa;
+			},
+		},
+		mounted(){
+			// console.log(this.$refs.box)
+			var maxdiv = this.$refs.maxbox
+			var mindiv = this.$refs.box.$el.children[0];
+			var maxwidth = maxdiv.offsetWidth;
+			var minwidth = mindiv.offsetWidth;
+			var maxHeight = maxdiv.offsetHeight;
+			var minHeight = mindiv.offsetHeight;
+			var width = maxwidth - minwidth-5;
+			var height = maxHeight - minHeight-5;
+			var left=null;
+			var top=null;
+			for(var i=0;i<this.arr.length;i++){
+				left = Math.random()*width;
+				top = Math.random()*height;
+				this.arr[i].aa=left+"px";
+				this.arr[i].bb=top+"px";
+			}
+			
+			
+		}
+		
+	});
+</script>
+</html>
