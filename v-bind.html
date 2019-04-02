@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.whh{
+			color: red;
+		}
+		.wgd{
+			background: yellowgreen;
+		}
+		.border{border:solid 1px red;}
+	</style>
+</head>
+<body>
+	<div id="app"></div>
+</body>
+<script type="text/javascript" src="vue/dist/vue.js"></script>
+<script type="text/javascript">
+	 new Vue({
+	 	el:'#app',
+        template:`<div>
+          <input type='text' v-bind:value="hello"/>
+          <div v-bind:class="qq">我是div</div>
+          <--数组绑定多个类名-->
+          <div v-bind:class='[whh,wgd]'>数组绑定多个类名</div>
+          <--对象绑定多个类名-->
+          <h1 :class='{border:isTrue}'>对象绑定类名</h1>
+           <--绑定行内样式表-->
+           <div :style='{color:aaa,background:bbb}'>行内样式</div>
+        </div>`,
+        data:function(){
+        	return{
+        		qq:'whh',
+        		hello:'hello world',
+        		whh:'whh',
+        		wgd:'wgd',
+                isTrue:true,
+                aaa:'red',
+                bbb:'yellow',
+        	}
+        }
+	 })
+</script>
+</html>
